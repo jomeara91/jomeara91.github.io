@@ -8,9 +8,13 @@
 <style>
 :root{--bg:#edf3ef;--card:#fff;--ink:#142019;--muted:#65716b;--green:#0b6b45;--lime:#659d22;--blue:#1769aa;--purple:#7451b9;--teal:#087f7b;--amber:#ae6800;--line:#dce5e0}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:linear-gradient(#dcefe6,#edf3ef 280px);color:var(--ink);min-height:100vh}.app{max-width:600px;margin:auto;padding:14px 15px 38px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:10px}.logo{width:45px;height:45px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:950}.header{padding:4px 2px 12px}.header h1{font-size:21px;margin:0}.small{font-size:11px;color:var(--muted)}.welcome{background:linear-gradient(135deg,#143d2e,#0b6b45);color:#fff;border-radius:20px;padding:20px;margin:8px 0 15px;box-shadow:0 8px 24px #10342525}.welcome h2{font-size:26px;margin:0 0 6px}.welcome p{margin:0;color:#d8eee4;font-size:13px;line-height:1.45}.sectionTitle{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 3px 8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card{border:0;background:var(--card);color:var(--ink);border-radius:20px;padding:16px;min-height:168px;text-align:left;box-shadow:0 8px 24px #10342517;display:flex;flex-direction:column;cursor:pointer;font:inherit;transition:transform .15s,box-shadow .15s}.card:active{transform:scale(.98)}.icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:900}.arrow{align-self:flex-end;color:var(--muted);font-size:20px;line-height:1}.card h3{font-size:16px;margin:auto 0 5px}.card p{font-size:11px;color:var(--muted);line-height:1.4;margin:0}.green{background:var(--green)}.blue{background:var(--blue)}.lime{background:var(--lime)}.purple{background:var(--purple)}.teal{background:var(--teal)}.amber{background:var(--amber)}.info{background:var(--card);border-radius:20px;padding:16px;margin-top:12px;box-shadow:0 8px 24px #10342517}.info b{display:block;margin-bottom:4px}.placeholder{display:none}.placeholder.active{display:block}.back{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:800;color:var(--ink)}.placeholderCard{background:#fff;border-radius:20px;padding:30px 20px;min-height:420px;box-shadow:0 8px 24px #10342517;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.placeholderCard .icon{width:70px;height:70px;font-size:30px}.placeholderCard h2{margin:18px 0 7px}.pill{background:#e6f3ed;color:var(--green);padding:6px 10px;border-radius:99px;font-weight:850;font-size:12px;margin-top:12px}@media(max-width:380px){.app{padding-left:10px;padding-right:10px}.grid{gap:8px}.card{padding:13px;min-height:158px}.welcome{padding:17px}}
+
+#loginGate{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;justify-content:center;align-items:flex-start;padding:80px 20px 30px;color:#111}#loginGate.off{display:none}.loginBox{width:min(100%,360px)}.loginBox h1{margin:0 0 24px;font-size:24px}.loginBox label{display:block;font-weight:700;margin:0 0 6px}.loginBox input{display:block;width:100%;padding:12px;border:1px solid #999;border-radius:6px;margin:0 0 16px;font:inherit;background:#fff;color:#111}.loginBox button{padding:12px 18px;background:#111;color:#fff;border:0;border-radius:6px;font:inherit;font-weight:800;cursor:pointer}.loginError{color:#b00020;margin-top:12px;min-height:20px;font-size:13px}
 </style>
 </head>
 <body>
+<section id="loginGate"><div class="loginBox"><h1>Login</h1><form id="loginForm"><label for="loginUser">User:</label><input id="loginUser" inputmode="numeric" required><label for="loginPassword">Password:</label><input id="loginPassword" type="password" inputmode="numeric" required><button id="loginButton" type="submit">Log in</button><div id="loginError" class="loginError"></div></form></div></section>
+
 <main class="app">
 <section id="home">
 <header class="header row"><div class="brand"><div class="logo">SE</div><div><h1>SEhub</h1><div class="small">Sales Executive toolkit</div></div></div></header>
@@ -24,21 +28,39 @@
 <button class="card" data-app="territory" data-default="5" onclick="useLocal('territory','apps/territory.html')"><div class="icon teal">🗺️</div><span class="arrow">›</span><h3>Territory Hub</h3><p>Open your territory tools and store resources.</p></button>
 <button class="card" id="moreCard" onclick="openMore()"><div class="icon amber">•••</div><span class="arrow">›</span><h3>And more..</h3><p>More SE tools can be added here over time.</p></button>
 </div>
-<section class="info"><b>Most-used tools stay close.</b><span class="small">SEhub remembers the apps you use most recently on this device and moves them toward the top..</span></section>
+<section class="info"><b>Most-used tools stay close.</b><span class="small">SEhub remembers the apps you use most recently on this device and moves them toward the top. And more.. always stays last.</span></section>
 </section>
 <section id="placeholder" class="placeholder"><header class="header row"><div class="brand"><div class="logo">SE</div><div><h1>And more..</h1><div class="small">SEhub</div></div></div><button class="back" onclick="goHome()">← Back</button></header><section class="placeholderCard"><div class="icon amber">•••</div><h2>More tools coming soon</h2><div class="small">Future SEhub apps can be added here as the toolkit grows.</div><div class="pill">Coming soon</div></section></section>
 </main>
 <script>
+const LOGIN_KEY='sehubLoginValidUntilV2';
+const LOGIN_MS=30*24*60*60*1000;
+function loginRead(){try{return Number(window.localStorage.getItem(LOGIN_KEY)||0)}catch(e){return 0}}
+function loginSave(){try{window.localStorage.setItem(LOGIN_KEY,String(Date.now()+LOGIN_MS))}catch(e){}}
+function unlockLogin(){const g=document.getElementById('loginGate');if(g){g.classList.add('off');g.style.display='none'}}
+function setupLogin(){
+  if(loginRead()>Date.now()){unlockLogin();return;}
+  const form=document.getElementById('loginForm');
+  form.onsubmit=function(e){
+    e.preventDefault();
+    const u=document.getElementById('loginUser').value.trim();
+    const pw=document.getElementById('loginPassword').value.trim();
+    if(u==='8617' && pw==='5054'){loginSave();document.getElementById('loginError').textContent='';unlockLogin();}
+    else{document.getElementById('loginError').textContent='Incorrect user or password.';}
+    return false;
+  };
+}
+
 const CONTACT_URL='https://apps.powerapps.com/play/e/default-b13c2abc-d2cc-4ef2-aece-dde4f979da55/a/6164128f-fe5e-4185-91e2-4410bb32b44d?tenantId=b13c2abc-d2cc-4ef2-aece-dde4f979da55&hint=bb9c7e79-788b-4983-b175-03e835fd96be&sourcetime=1785970668324';
 const KEY='sehubRecentAppsV1';
 function getUsage(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
-function recordUse(id){const u=getUsage();u[id]=Date.now();localStorage.setItem(KEY,JSON.stringify(u))}
+function recordUse(id){const u=getUsage();u[id]=Date.now();try{localStorage.setItem(KEY,JSON.stringify(u))}catch(e){}}
 function reorderApps(){const grid=document.getElementById('appGrid'),more=document.getElementById('moreCard'),usage=getUsage();const cards=[...grid.querySelectorAll('.card[data-app]')];cards.sort((a,b)=>{const at=usage[a.dataset.app]||0,bt=usage[b.dataset.app]||0;if(bt!==at)return bt-at;return Number(a.dataset.default)-Number(b.dataset.default)});cards.forEach(c=>grid.insertBefore(c,more))}
 function useLocal(id,url){recordUse(id);location.href=url}
 function useExternal(id,url){recordUse(id);window.open(url,'_blank','noopener,noreferrer')}
 function openMore(){document.getElementById('home').style.display='none';document.getElementById('placeholder').classList.add('active');window.scrollTo(0,0)}
 function goHome(){document.getElementById('placeholder').classList.remove('active');document.getElementById('home').style.display='block';reorderApps();window.scrollTo(0,0)}
-document.addEventListener('DOMContentLoaded',reorderApps);
+document.addEventListener('DOMContentLoaded',function(){setupLogin();reorderApps();});
 </script>
 </body>
 </html>
