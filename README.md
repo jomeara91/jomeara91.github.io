@@ -1,2 +1,1 @@
-Testing testing 123
-this is a test
+need to fix barcode assignment within qr and req
